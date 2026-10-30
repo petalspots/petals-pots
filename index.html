@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pots & Patel's | Little things that bloom</title>
+<style>
+:root{--green:#244b38;--sage:#dce8d8;--cream:#faf7ef;--pink:#f2d7d1;--ink:#243329;--muted:#69766c;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Georgia,'Times New Roman',serif}
+a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
+.topbar{background:var(--green);color:#fff;text-align:center;padding:10px 14px;font:12px Arial,sans-serif;letter-spacing:1.4px}
+header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 6%;background:var(--cream);position:sticky;top:0;z-index:5;border-bottom:1px solid #e8e4d9}
+.logo{font-size:25px;font-weight:bold;letter-spacing:-.8px;color:var(--green);white-space:nowrap}.logo span{font-style:italic;color:#ba796b}
+nav{display:flex;gap:28px;font:13px Arial,sans-serif;color:#415348}nav a:hover{color:#b16f60}
+.cart{border:1px solid var(--green);background:transparent;border-radius:30px;padding:10px 15px;color:var(--green);font:13px Arial,sans-serif}
+.hero{padding:58px 6% 65px;display:grid;grid-template-columns:1fr 1fr;gap:42px;align-items:center;max-width:1400px;margin:auto}
+.eyebrow{font:11px Arial,sans-serif;letter-spacing:2.5px;text-transform:uppercase;color:#a56c5d}
+h1{font-size:clamp(45px,6vw,82px);font-weight:normal;line-height:.98;letter-spacing:-2px;margin:18px 0 22px;color:var(--green)}h1 em{color:#b57969;font-weight:normal}
+.hero p{font:16px/1.8 Arial,sans-serif;color:var(--muted);max-width:440px}
+.primary{display:inline-block;background:var(--green);color:white;border:0;border-radius:30px;padding:15px 23px;margin-top:17px;font:13px Arial,sans-serif;letter-spacing:.4px}.primary:hover{background:#37664c}
+.hero-art{min-height:410px;position:relative;border-radius:48% 48% 18px 18px;overflow:hidden;background:linear-gradient(145deg,#dce8d8,#f1ddd2);display:flex;align-items:center;justify-content:center}
+.hero-art:before{content:"";position:absolute;width:72%;height:72%;border:1px solid #fff9;border-radius:50%;top:9%;left:14%}
+.hero-art .sun{position:absolute;width:95px;height:95px;border-radius:50%;background:#f7e7b8;right:14%;top:12%}
+.vase{position:absolute;bottom:9%;width:180px;height:160px;border-radius:24% 24% 35% 35%;background:linear-gradient(90deg,#c58f70,#e0b99d 48%,#b97d60);box-shadow:inset -15px 0 20px #8c594533}
+.stem{position:absolute;bottom:39%;width:4px;height:190px;background:#527451;transform-origin:bottom;border-radius:4px}
+.leaf{position:absolute;width:38px;height:75px;background:#557b58;border-radius:100% 0 100% 0;transform-origin:bottom right}
+.flower{position:absolute;bottom:66%;width:26px;height:26px;background:#f6eee0;border-radius:50%;box-shadow:0 -15px 0 -3px #f6eee0,0 15px 0 -3px #f6eee0,15px 0 0 -3px #f6eee0,-15px 0 0 -3px #f6eee0,11px 11px 0 -3px #f6eee0,-11px -11px 0 -3px #f6eee0,11px -11px 0 -3px #f6eee0,-11px 11px 0 -3px #f6eee0}
+.flower:after{content:"";position:absolute;inset:8px;background:#d9a75e;border-radius:50%}
+.caption{position:absolute;bottom:20px;right:22px;font-style:italic;font-size:14px;color:#50614f}
+.marquee{background:var(--sage);padding:17px 5%;text-align:center;color:var(--green);font-style:italic;font-size:18px;letter-spacing:.5px}
+.section{padding:72px 6%;max-width:1400px;margin:auto}.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:30px}.section h2{font-size:clamp(32px,4vw,48px);font-weight:normal;color:var(--green);margin:8px 0}.sub{font:14px/1.7 Arial,sans-serif;color:var(--muted)}
+.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:25px}.filter{border:1px solid #cdd7ca;background:transparent;border-radius:25px;padding:9px 15px;color:var(--green);font:12px Arial,sans-serif}.filter.active,.filter:hover{background:var(--green);color:white}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.product{background:#fffdf8;padding:12px 12px 18px;border-radius:8px;transition:transform .2s}.product:hover{transform:translateY(-4px)}.product-art{height:220px;border-radius:5px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}.product-art .pot{position:absolute;bottom:20px;width:100px;height:88px;border-radius:12px 12px 24px 24px;background:var(--pot,#c88e70);box-shadow:inset -12px 0 15px #00000012}.product-art .plant{position:absolute;bottom:91px;width:5px;height:100px;background:#53714b;transform-origin:bottom;border-radius:4px}.product-art .leaf{width:29px;height:53px;background:var(--leaf,#668360)}.product-art .bloom{position:absolute;bottom:170px;width:18px;height:18px;border-radius:50%;background:var(--bloom,#e7aeb0);box-shadow:0 -10px 0 -2px var(--bloom,#e7aeb0),0 10px 0 -2px var(--bloom,#e7aeb0),10px 0 0 -2px var(--bloom,#e7aeb0),-10px 0 0 -2px var(--bloom,#e7aeb0),7px 7px 0 -2px var(--bloom,#e7aeb0),-7px -7px 0 -2px var(--bloom,#e7aeb0),7px -7px 0 -2px var(--bloom,#e7aeb0),-7px 7px 0 -2px var(--bloom,#e7aeb0)}
+.product h3{font-size:19px;font-weight:normal;margin:15px 0 7px}.product-bottom{display:flex;align-items:center;justify-content:space-between;font:13px Arial,sans-serif}.price{font-weight:bold;color:var(--green)}.add{border:1px solid #cbd6ca;background:transparent;border-radius:50%;width:33px;height:33px;font-size:20px;color:var(--green)}.add:hover{background:var(--green);color:white}
+.story{background:#e9eee4;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:58px 7%;border-radius:10px}.story h2{font-size:44px;font-weight:normal;line-height:1.05;margin:12px 0;color:var(--green)}.story p{font:15px/1.8 Arial,sans-serif;color:#5b6a5d}.story-art{min-height:270px;display:flex;align-items:center;justify-content:center;background:#d6e2d1;border-radius:50% 50% 8px 8px;font-size:110px}
+.newsletter{text-align:center;background:var(--pink);padding:55px 20px}.newsletter h2{font-size:38px;font-weight:normal;color:var(--green);margin:10px}.newsletter p{font:14px Arial,sans-serif;color:#655b53}.newsletter form{display:flex;max-width:430px;margin:22px auto 0;gap:8px}.newsletter input{min-width:0;flex:1;border:1px solid #d1b4ad;border-radius:30px;padding:14px 18px;background:#fffaf5}.newsletter button{margin:0}
+footer{padding:28px 6%;background:var(--green);color:#f7f4e9;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;font:12px Arial,sans-serif}footer .logo{color:white}footer .logo span{color:#edc1b5}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--green);color:white;padding:13px 20px;border-radius:30px;font:13px Arial,sans-serif;box-shadow:0 6px 25px #0002;display:none;z-index:10}
+@media(max-width:850px){.hero{grid-template-columns:1fr;padding-top:38px}.hero-art{min-height:340px}.products{grid-template-columns:repeat(2,1fr)}nav{gap:13px}.story{grid-template-columns:1fr}.story-art{min-height:190px}}
+@media(max-width:520px){header{padding:16px 4%;gap:8px}.logo{font-size:20px}nav{display:none}.hero,.section{padding-left:5%;padding-right:5%}.hero{gap:26px}h1{font-size:53px}.products{gap:10px}.product-art{height:175px}.product-art .pot{transform:scale(.8);bottom:12px}.product-art .bloom{bottom:145px}.product-art .plant{height:75px;bottom:75px}.section-head{align-items:start;flex-direction:column}.story{padding:35px 7%}.story h2{font-size:37px}.newsletter form{flex-direction:column}.newsletter button{width:100%}}
+</style>
+</head>
+<body>
+<div class="topbar">A LITTLE GREEN, A LOT OF JOY · MADE FOR YOUR HAPPY PLACE</div>
+<header>
+  <a class="logo" href="#">Pots <span>&</span> Patel's</a>
+  <nav><a href="#shop">Shop</a><a href="#story">Our story</a><a href="#newsletter">Say hello</a></nav>
+  <button class="cart" onclick="showCart()">Bag (<span id="cartCount">0</span>)</button>
+</header>
+<main>
+<section class="hero">
+  <div>
+    <div class="eyebrow">Plants · Petals · Pretty pots</div>
+    <h1>Little things<br>that <em>bloom.</em></h1>
+    <p>Bring home a little happiness. Discover leafy friends, cheerful flowers and pots that make every corner feel special.</p>
+    <a class="primary" href="#shop">FIND YOUR FAVOURITE ↗</a>
+  </div>
+  <div class="hero-art" aria-label="Illustration of a flower in a pot">
+    <div class="sun"></div><div class="stem" style="left:43%;transform:rotate(-19deg)"></div>
+    <div class="stem" style="left:52%;height:220px;transform:rotate(13deg)"></div>
+    <div class="stem" style="left:60%;height:175px;transform:rotate(26deg)"></div>
+    <div class="leaf" style="left:37%;bottom:48%;transform:rotate(-35deg)"></div><div class="leaf" style="left:49%;bottom:54%;transform:rotate(35deg)"></div><div class="leaf" style="left:55%;bottom:44%;transform:rotate(48deg)"></div><div class="leaf" style="left:45%;bottom:60%;transform:rotate(-48deg)"></div>
+    <div class="flower" style="left:39%;bottom:69%"></div><div class="flower" style="left:54%;bottom:76%;transform:scale(.85);background:#e5a9ad"></div><div class="flower" style="left:63%;bottom:64%;transform:scale(.72);background:#fff6e6"></div>
+    <div class="vase"></div><div class="caption">grown with a little love ♡</div>
+  </div>
+</section>
+<div class="marquee">“A home feels happier when something is growing.” ✿</div>
+<section class="section" id="shop">
+  <div class="section-head"><div><div class="eyebrow">The little shop</div><h2>Meet your new favourites</h2><div class="sub">Thoughtful greens and blooms for every kind of space.</div></div></div>
+  <div class="filters">
+    <button class="filter active" onclick="filterProducts('all',this)">Everything</button><button class="filter" onclick="filterProducts('plants',this)">Leafy plants</button><button class="filter" onclick="filterProducts('flowers',this)">Flowers</button><button class="filter" onclick="filterProducts('pots',this)">Pretty pots</button>
+  </div>
+  <div class="products" id="products">
+    <article class="product" data-category="plants"><div class="product-art" style="background:#e7eee1;--pot:#c58c6a;--leaf:#527451"><div class="plant" style="left:48%;transform:rotate(-20deg)"></div><div class="plant" style="left:53%;height:120px;transform:rotate(17deg)"></div><div class="plant" style="left:43%;height:85px;transform:rotate(-40deg)"></div><div class="leaf" style="left:35%;bottom:52%;transform:rotate(-45deg)"></div><div class="leaf" style="left:45%;bottom:65%;transform:rotate(30deg)"></div><div class="leaf" style="left:53%;bottom:55%;transform:rotate(48deg)"></div><div class="leaf" style="left:47%;bottom:45%;transform:rotate(-40deg)"></div><div class="pot"></div></div><h3>Sunny Snake Plant</h3><div class="product-bottom"><span class="price">₹399</span><button class="add" onclick="addToBag('Sunny Snake Plant',399)">+</button></div></article>
+    <article class="product" data-category="flowers"><div class="product-art" style="background:#f4e1df;--pot:#e0bba4;--leaf:#60815b;--bloom:#d9899b"><div class="plant" style="left:49%;height:110px;transform:rotate(-12deg)"></div><div class="plant" style="left:55%;height:100px;transform:rotate(17deg)"></div><div class="plant" style="left:42%;height:80px;transform:rotate(-30deg)"></div><div class="leaf" style="left:40%;bottom:52%;transform:rotate(-45deg)"></div><div class="leaf" style="left:52%;bottom:55%;transform:rotate(45deg)"></div><div class="bloom" style="left:40%"></div><div class="bloom" style="left:52%;bottom:160px;transform:scale(.8)"></div><div class="bloom" style="left:61%;bottom:145px;transform:scale(.7)"></div><div class="pot"></div></div><h3>Blush Bloom Pot</h3><div class="product-bottom"><span class="price">₹299</span><button class="add" onclick="addToBag('Blush Bloom Pot',299)">+</button></div></article>
+    <article class="product" data-category="plants"><div class="product-art" style="background:#e5e8d8;--pot:#b7a68b;--leaf:#4c7451"><div class="plant" style="left:50%;height:120px;transform:rotate(-5deg)"></div><div class="plant" style="left:45%;height:90px;transform:rotate(-35deg)"></div><div class="plant" style="left:55%;height:100px;transform:rotate(34deg)"></div><div class="leaf" style="left:39%;bottom:59%;transform:rotate(-50deg)"></div><div class="leaf" style="left:47%;bottom:68%;transform:rotate(20deg)"></div><div class="leaf" style="left:55%;bottom:61%;transform:rotate(45deg)"></div><div class="leaf" style="left:48%;bottom:48%;transform:rotate(-35deg)"></div><div class="pot"></div></div><h3>Little Jungle Buddy</h3><div class="product-bottom"><span class="price">₹449</span><button class="add" onclick="addToBag('Little Jungle Buddy',449)">+</button></div></article>
+    <article class="product" data-category="pots"><div class="product-art" style="background:#f1e7d7;--pot:#d3a18c"><div class="pot" style="width:125px;height:112px;border-radius:10px 10px 28px 28px"></div><div style="position:absolute;bottom:66px;color:#fff4e7;font-size:26px;z-index:1">✿</div><div style="position:absolute;bottom:42px;color:#fff4e7;font-size:13px;letter-spacing:1px;z-index:1">bloom</div></div><h3>Sunday Ceramic Pot</h3><div class="product-bottom"><span class="price">₹249</span><button class="add" onclick="addToBag('Sunday Ceramic Pot',249)">+</button></div></article>
+  </div>
+</section>
+<section class="section" id="story">
+  <div class="story"><div><div class="eyebrow">A little about us</div><h2>Small pots.<br>Big happy energy.</h2><p>At Pots & Patel's, we believe you don't need a big garden to bring nature home. A sunny windowsill, a tiny desk or a favourite corner can become your own little green escape.</p><a class="primary" href="#shop">SHOP THE COLLECTION ↗</a></div><div class="story-art">🪴🌼</div></div>
+</section>
+<section class="newsletter" id="newsletter"><div class="eyebrow">Let's keep in touch</div><h2>Love grows here.</h2><p>Get plant care tips, fresh arrivals and little happy notes.</p><form onsubmit="subscribe(event)"><input type="email" id="email" placeholder="Your email address" required><button class="primary" type="submit">COUNT ME IN ↗</button></form></section>
+</main>
+<footer><a class="logo" href="#">Pots <span>&</span> Patel's</a><div>Made with ♡ for plant people</div><div>© 2026 Pots & Patel's</div></footer>
+<div class="toast" id="toast"></div>
+<script>
+let bag=[];
+function notify(message){const t=document.getElementById('toast');t.textContent=message;t.style.display='block';clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.style.display='none',2600)}
+function addToBag(name,price){bag.push({name,price});document.getElementById('cartCount').textContent=bag.length;notify(name+' added to your bag 🌿')}
+function showCart(){if(!bag.length){notify('Your bag is waiting for something lovely 🌼');return}let total=bag.reduce((s,p)=>s+p.price,0);notify('Your bag: '+bag.map(p=>p.name).join(', ')+' · Total ₹'+total)}
+function filterProducts(category,button){document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));button.classList.add('active');document.querySelectorAll('.product').forEach(p=>p.style.display=category==='all'||p.dataset.category===category?'block':'none')}
+function subscribe(e){e.preventDefault();notify('Thank you! This demo form is ready to connect to your email list.');e.target.reset()}
+</script>
+</body>
+</html>

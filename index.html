@@ -90,11 +90,34 @@ footer{padding:28px 6%;background:var(--green);color:#f7f4e9;display:flex;justif
 </main>
 <footer><a class="logo" href="#">Pots <span>&</span> Patel's</a><div>Made with ♡ for plant people</div><div>© 2026 Pots & Patel's</div></footer>
 <div class="toast" id="toast"></div>
+<div id="cartModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.48);z-index:1000;padding:18px;align-items:center;justify-content:center">
+  <div style="background:#fffdf8;color:#244b38;border-radius:18px;padding:22px;width:min(100%,420px);max-height:80vh;overflow:auto;box-shadow:0 12px 40px #0003">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+      <h2 style="margin:0;font-family:Georgia,serif">Your shopping bag</h2>
+      <button onclick="closeCart()" aria-label="Close bag" style="border:1px solid #cdd8cc;background:transparent;border-radius:50%;width:38px;height:38px;font-size:22px">×</button>
+    </div>
+    <div id="cartItems" style="margin:18px 0;line-height:1.8"></div>
+    <div style="border-top:1px solid #ddd;padding-top:14px;font-weight:bold;font-size:18px">Total: <span id="cartTotal"></span></div>
+    <p style="font-size:13px;color:#65756a">This is a demo shopping bag. Orders and payments are not connected yet.</p>
+    <button onclick="closeCart()" style="background:#244b38;color:white;border:0;border-radius:24px;padding:12px 20px;width:100%;font-size:15px">Continue shopping</button>
+  </div>
+</div>
 <script>
 let bag=[];
 function notify(message){const t=document.getElementById('toast');t.textContent=message;t.style.display='block';clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.style.display='none',2600)}
 function addToBag(name,price){bag.push({name,price});document.getElementById('cartCount').textContent=bag.length;notify(name+' added to your bag 🌿')}
-function showCart(){if(!bag.length){notify('Your bag is waiting for something lovely 🌼');return}let total=bag.reduce((s,p)=>s+p.price,0);notify('Your bag: '+bag.map(p=>p.name).join(', ')+' · Total ₹'+total)}
+function showCart(){
+  const modal=document.getElementById('cartModal');
+  const items=document.getElementById('cartItems');
+  if(!bag.length){items.textContent='Your bag is empty. Add a lovely product first 🌼';document.getElementById('cartTotal').textContent='₹0';}
+  else {
+    items.innerHTML=bag.map((p,i)=>'<div style="display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #eee;padding:8px 0"><span>'+p.name+'</span><strong>₹'+p.price.toLocaleString('en-IN')+'</strong></div>').join('');
+    const total=bag.reduce((s,p)=>s+p.price,0);
+    document.getElementById('cartTotal').textContent='₹'+total.toLocaleString('en-IN');
+  }
+  modal.style.display='flex';
+}
+function closeCart(){document.getElementById('cartModal').style.display='none'}
 function filterProducts(category,button){document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));button.classList.add('active');document.querySelectorAll('.product').forEach(p=>p.style.display=category==='all'||p.dataset.category===category?'block':'none')}
 function subscribe(e){e.preventDefault();notify('Thank you! This demo form is ready to connect to your email list.');e.target.reset()}
 </script>
